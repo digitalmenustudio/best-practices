@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: dev
+  password: dev
+  port: 5437
+
+development:
+  database: dev
+  <<: *default
+
+test:
+  database: test
+  <<: *default
+
+#production:
+#  <<: *default
+#  database: boilerplate_production
+#  username: boilerplate
+#  password: <%#= ENV["BOILERPLATE_DATABASE_PASSWORD"] %>
