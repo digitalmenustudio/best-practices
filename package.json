@@ -4,11 +4,17 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.5",
+    "autoprefixer": "^10.4.20",
     "esbuild": "^0.23.1",
-    "sass": "^1.77.8"
+    "postcss": "^8.4.41",
+    "sass": "^1.77.8",
+    "tailwindcss": "^3.4.10"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --target=safari11 --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/admin.scss:./app/assets/builds/admin.css ./app/assets/stylesheets/web.scss:./app/assets/builds/web.css --no-source-map --load-path=node_modules"
+    "build:css": "postcss ./app/assets/stylesheets/admin.scss -o ./app/assets/builds/admin.css && postcss ./app/assets/stylesheets/web.scss -o ./app/assets/builds/web.css"
+  },
+  "devDependencies": {
+    "postcss-cli": "^11.0.0"
   }
 }
